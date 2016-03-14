@@ -6,6 +6,7 @@ LABEL Version=1.0
 LABEL Release=1
 
 RUN yum -y update && \
-    yum install -y ghostscript
+    yum install -y ghostscript foomatic-db && \
+    yum install -y kubernetes
 
 CMD uname -a && env
