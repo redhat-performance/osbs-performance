@@ -19,3 +19,18 @@ RUN yum install -y git tar wget hostname sysvinit-tools util-linux bsdtar \
     socat ethtool device-mapper iptables && \
     yum clean all
 
+## openshift3/ose
+RUN yum install -y atomic-openshift --enablerepo=rhel-7-server-ose-3.2-rpms && \
+    yum clean all
+
+RUN mkdir -p /var/lib/origin
+
+RUN setcap 'cap_net_bind_service=ep' /usr/bin/openshift
+
+ENV HOME /root
+ENV OPENSHIFT_CONTAINERIZED true
+ENV KUBECONFIG /var/lib/origin/openshift.local.config/master/admin.kubeconfig
+WORKDIR /var/lib/origin
+EXPOSE 8443 53
+ENTRYPOINT ["/usr/bin/openshift"]
+
