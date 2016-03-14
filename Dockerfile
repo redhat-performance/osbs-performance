@@ -5,7 +5,7 @@ LABEL BZComponent=average-size-test-docker
 LABEL Version=1.0
 LABEL Release=1
 
-RUN yum install -y ghostsript
-RUN yum install -y cups
+RUN yum -y update && \
+    yum install -y ghostscript cups
 
 CMD uname -a && env
