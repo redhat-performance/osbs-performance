@@ -6,6 +6,6 @@ LABEL Version=1.0
 LABEL Release=1
 
 RUN yum -y update && \
-    yum install -y ghostscript cups
+    yum install -y ghostscript
 
 CMD uname -a && env
