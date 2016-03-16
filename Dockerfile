@@ -3,7 +3,7 @@ MAINTAINER Red Hat, Inc.
 
 LABEL BZComponent="average-size-test-docker"
 LABEL Name="rhel7/average-size-test"
-LABEL Version="1.0
+LABEL Version="1.0"
 LABEL Release="6"
 LABEL Architecture="x86_64"
 
