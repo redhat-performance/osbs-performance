@@ -8,7 +8,7 @@ FROM rhel7:latest
 
 LABEL Name="rhel7/average-size-test"
 LABEL Version="1.0"
-LABEL Release="4"
+LABEL Release="5"
 LABEL Architecture="x86_64"
 LABEL BZComponent="average-size-test-docker"
 
