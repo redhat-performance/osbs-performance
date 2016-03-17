@@ -4,7 +4,7 @@ MAINTAINER Red Hat, Inc.
 LABEL BZComponent="average-size-test-docker"
 LABEL Name="rhel7/average-size-test"
 LABEL Version="1.0"
-LABEL Release="6"
+LABEL Release="7"
 LABEL Architecture="x86_64"
 
 ENV container docker
@@ -15,7 +15,11 @@ RUN [ -e /etc/yum.conf ] && sed -i '/tsflags=nodocs/d' /etc/yum.conf || true
 
 RUN yum -y reinstall "*" && yum clean all
 
+# Install some random things for a larger image
 RUN yum -y install \
+  atomic \
+  ghostscript \
+  foomatic-db \
   yum && yum clean all
 
 CMD ["/usr/bin/bash"]
