@@ -16,7 +16,6 @@ RUN [ -e /etc/yum.conf ] && sed -i '/tsflags=nodocs/d' /etc/yum.conf || true
 RUN yum -y reinstall "*" && yum clean all
 
 RUN yum -y install \
-  abrt \
   yum && yum clean all
 
 # Workaround for locale error
