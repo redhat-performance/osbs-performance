@@ -18,8 +18,5 @@ RUN yum -y reinstall "*" && yum clean all
 RUN yum -y install \
   yum && yum clean all
 
-# Workaround for locale error
-RUN yum -y reinstall glibc-common
-
 CMD ["/usr/bin/bash"]
 
