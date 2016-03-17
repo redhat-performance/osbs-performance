@@ -18,7 +18,6 @@ RUN yum -y reinstall "*" && yum clean all
 # Install some random things for a larger image
 RUN yum -y install \
   atomic \
-  ghostscript \
   foomatic-db \
   yum && yum clean all
 
