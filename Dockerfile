@@ -1,10 +1,10 @@
-FROM rhel7
-MAINTAINER Red Hat, Inc.
+FROM busybox
+MAINTAINER jeder@redhat.com
 
-LABEL BZComponent="small-size-test-docker"
-LABEL Name="rhel7/small-size-test"
-LABEL Version="1.0"
-LABEL Release="7.2"
-LABEL Architecture="x86_64"
+LABEL "Name"="busybox" \
+      "Version"="1.0" \
+      "Release"="1" \
+      "Architecture"="x86_64" \
+      "BZComponent"="testing"
 
-CMD ["/usr/bin/bash"]
+CMD ["/bin/sh"] 
