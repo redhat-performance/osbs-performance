@@ -1,10 +1,24 @@
-FROM busybox
-MAINTAINER jeder@redhat.com
+FROM rhel7
+MAINTAINER Red Hat, Inc.
 
-LABEL "Name"="busybox" \
-      "Version"="1.0" \
-      "Release"="1" \
-      "Architecture"="x86_64" \
-      "BZComponent"="testing"
+LABEL BZComponent="average-size-test-docker"
+LABEL Name="rhel7/average-size-test"
+LABEL Version="1.0"
+LABEL Release="7.1"
+LABEL Architecture="x86_64"
 
-CMD ["/bin/sh"] 
+ENV container docker
+LABEL RUN="docker run -it --name NAME --privileged --ipc=host --net=host --pid=host -e HOST=/host -e NAME=NAME -e IMAGE=IMAGE -v /run:/run -v /var/log:/var/log -v /etc/machine-id:/etc/machine-id -v /etc/localtime:/etc/localtime -v /:/host IMAGE"
+
+# Make sure that docs are installed in this image and every other layer built on top of it
+RUN [ -e /etc/yum.conf ] && sed -i '/tsflags=nodocs/d' /etc/yum.conf || true
+
+RUN yum -y reinstall "*" && yum clean all
+
+# Install some random things for a larger image
+RUN yum -y install \
+  atomic \
+  yum && yum clean all
+
+CMD ["/usr/bin/bash"]
+
